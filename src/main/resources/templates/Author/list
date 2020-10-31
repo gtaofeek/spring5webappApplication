@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Framework</title>
+</head>
+<body>
+
+<h1>Author List</h1>
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </tr>
+    <tr th:each="author : $(authors)">
+        <td th:text="author.firstName : $(authors)">Jor</td>
+        <td th:text="author.lastName.title : $(authors)">Test</td>
+    </tr>
+</table>
+</body>
+</html>

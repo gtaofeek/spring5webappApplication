@@ -10,9 +10,57 @@ import javax.persistence.Id;
 @Entity
 public class Publisher {
 
-    public long getId() {
-        return id;
+
+    @Override
+    public String toString() {
+        return "Publisher{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip='" + zip + '\'' +
+                '}';
     }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    private String name;
+    private String address;
+    private String city;
+    private String state;
+    private String zip;
+
+
+    public Publisher() {
+    }
+
+    public Publisher(long id, String name, String address, String city, String state, String zip) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Publisher publisher = (Publisher) o;
+
+        return id == publisher.id;
+    }
+
+
 
     public void setId(long id) {
         this.id = id;
@@ -34,44 +82,29 @@ public class Publisher {
         this.address = address;
     }
 
-    @Id
-    @GeneratedValue( strategy = GenerationType.AUTO)
-    private long id;
-    private String name;
-    private String address;
-//    private String address;
-
-
-    public Publisher() {
+    public String getCity() {
+        return city;
     }
 
-    public Publisher(String name, String address) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Publisher publisher = (Publisher) o;
-
-        return id == publisher.id;
+    public String getState() {
+        return state;
     }
 
-    @Override
-    public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+    public void setState(String state) {
+        this.state = state;
     }
 
-    @Override
-    public String toString() {
-        return "Publisher{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address=" + address +
-                '}';
+    public String getZip() {
+        return zip;
     }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+
 }
